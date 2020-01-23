@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.naming.spi.DirStateFactory.Result;
 
 class DataBase {
     private String URL;
@@ -60,9 +59,9 @@ class DataBase {
         String SQL = "INSERT INTO PEOPLE(NOMBRE, APELLIDOS, DEPARTAMENTO) VALUES(?,?,?)";
         try{
             PreparedStatement preparedstatement = this.connection.prepareStatement(SQL);
-            preparedstatement.setString(1,people.getName());
-            preparedstatement.setString(2,people.getApellido());
-            preparedstatement.setString(3,people.getDepartamento());
+            preparedstatement.setString(1,people.getName() + " \t ");
+            preparedstatement.setString(2,people.getApellido() + " \t ");
+            preparedstatement.setString(3,people.getDepartamento() + " \t ");
             preparedstatement.executeUpdate();
         }catch(SQLException sqlException){
             System.out.println("ERROR DataBase::insert (SQLException) " 
